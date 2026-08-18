@@ -134,6 +134,8 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "website" / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = DEBUG
 STORAGES = {
     "default": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
