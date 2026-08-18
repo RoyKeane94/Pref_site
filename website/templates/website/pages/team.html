@@ -1,0 +1,19 @@
+{% extends "website/pages/interior.html" %}
+{% block title %}Our Team | Prefequity{% endblock %}
+{% block body_class %}page-interior page-team{% endblock %}
+{% block inner_class %}team-wrap{% endblock %}
+{% block page_title %}Experienced partners to lower mid-market companies{% endblock %}
+{% block page_lead %}
+<p class="hero-lead">The members of the Prefequity team have built up highly successful track records over many years of supporting lower middle-market companies around the UK.</p>
+{% endblock %}
+{% block page_body %}
+<div class="team-grid">
+    {% for member in team %}
+    <article class="team-card">
+        <h3>{{ member.name }}</h3>
+        <p class="meta">{{ member.role }}</p>
+        <p>{{ member.bio }}</p>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+<header class="site-header" id="site-header">
+    <div class="container nav-bar">
+        <a class="logo" href="{% url 'home' %}" aria-label="Prefequity home">
+            <img src="{% static 'website/img/prefequity-logo.png' %}" alt="Prefequity">
+        </a>
+
+        <nav class="nav-desktop" aria-label="Primary">
+            {% for item in nav_primary %}
+                <a href="{% url item.url_name %}" class="{% if request.resolver_match.url_name == item.url_name or item.url_name == 'our-portfolio' and request.resolver_match.url_name == 'portfolio-detail' or item.url_name == 'news' and request.resolver_match.url_name == 'news-detail' %}is-active{% endif %}">{{ item.label }}</a>
+            {% endfor %}
+        </nav>
+
+        <a class="nav-investor{% if request.resolver_match.url_name == 'investor-data-room' %} is-active{% endif %}" href="#">
+            <svg class="nav-investor-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.25" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M5.5 19.2c.8-3.3 3.3-5.2 6.5-5.2s5.7 1.9 6.5 5.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            Investor Data Room
+        </a>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-overlay" aria-label="Open menu">
+            <span class="nav-toggle-label">Menu</span>
+            <span class="nav-toggle-bars" aria-hidden="true">
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+    </div>
+</header>
+
+<div class="nav-overlay" id="nav-overlay" hidden>
+    <div class="nav-overlay-inner">
+        <p class="eyebrow">Menu</p>
+        <nav aria-label="Mobile">
+            {% for item in nav_items %}
+                <a href="{% if item.url_name == 'investor-data-room' %}#{% else %}{% url item.url_name %}{% endif %}">
+                    <span class="nav-index">0{{ forloop.counter }}</span>
+                    {{ item.label }}
+                </a>
+            {% endfor %}
+        </nav>
+        <p class="nav-overlay-contact">{{ office_address }}<br>{{ office_phone }}</p>
+    </div>
+</div>

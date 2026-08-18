@@ -1,0 +1,179 @@
+{% extends "website/base.html" %}
+{% load static %}
+
+{% block title %}Our Impact | Prefequity{% endblock %}
+{% block body_class %}page-interior page-impact{% endblock %}
+
+{% block content %}
+<section class="impact-intro">
+    <div class="container impact-intro-grid">
+        <div class="impact-intro-copy">
+            <h1 class="page-header-rise">We help regional SMEs prosper and improve their local communities</h1>
+            <p class="impact-intro-lead page-header-rise delay-1">SMEs make a vital contribution to the UK growth agenda. Importantly, our investments support high-quality jobs, delivering knock-on benefits for local communities.</p>
+        </div>
+        <figure class="impact-intro-figure page-header-rise delay-2">
+            <img class="impact-intro-image" src="{% static 'website/img/impact-hero.png' %}" alt="A mature tree in an open field with sunlight through the branches">
+        </figure>
+    </div>
+</section>
+
+<section class="impact-stats-band">
+    <div class="container impact-stats-grid">
+        <article class="impact-stat-card reveal">
+            <p class="impact-stat-value"><span data-count="7">0</span> / 8</p>
+            <p class="impact-stat-label">Fund I companies based outside the M25</p>
+        </article>
+        <article class="impact-stat-card reveal delay-1">
+            <p class="impact-stat-value"><span data-count="23" data-suffix="%">0</span></p>
+            <p class="impact-stat-label">Gross median weekly pay below the London average</p>
+        </article>
+        <article class="impact-stat-card reveal delay-2">
+            <p class="impact-stat-value">UN PRI</p>
+            <p class="impact-stat-label">Signatory to the UN Principles for Responsible Investment</p>
+        </article>
+    </div>
+</section>
+
+<section class="section section-cream impact-region">
+    <div class="container impact-region-grid">
+        <div class="impact-region-copy reveal">
+            <h2 class="focus-heading">Investing beyond London</h2>
+            <p>7 of the 8 companies we backed in Fund I are based outside the M25, in areas where regional economies benefit from patient growth capital and long-term job creation.</p>
+            <p class="meta">Source: ONS</p>
+        </div>
+        <div class="impact-metrics">
+            <article class="impact-metric reveal" style="--metric-value: 23%">
+                <div class="impact-metric-head">
+                    <span class="impact-metric-value"><span data-count="23" data-suffix="%">0</span></span>
+                    <p>Gross median weekly pay below the London average</p>
+                </div>
+                <div class="impact-metric-bar" aria-hidden="true"><span></span></div>
+            </article>
+            <article class="impact-metric reveal delay-1" style="--metric-value: 36%">
+                <div class="impact-metric-head">
+                    <span class="impact-metric-value"><span data-count="36" data-suffix="%">0</span></span>
+                    <p>Gross disposable household income below the London average</p>
+                </div>
+                <div class="impact-metric-bar" aria-hidden="true"><span></span></div>
+            </article>
+            <article class="impact-metric reveal delay-2" style="--metric-value: 37%">
+                <div class="impact-metric-head">
+                    <span class="impact-metric-value"><span data-count="37" data-suffix="%">0</span></span>
+                    <p>Active enterprises per 1,000 people below the London average</p>
+                </div>
+                <div class="impact-metric-bar" aria-hidden="true"><span></span></div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="focus-section impact-accountability">
+    <div class="container focus-accordion-wrap">
+        <h2 class="focus-heading">Holding ourselves accountable</h2>
+        <p class="impact-accountability-lead">We hold ourselves accountable for our impact and hold others accountable for theirs, too.</p>
+        <div class="partner-interactive accountability-interactive" data-tabbed-section>
+            <div class="partner-nav" role="tablist" aria-label="Holding ourselves accountable">
+                <button class="partner-tab is-active" type="button" role="tab" id="accountability-tab-commitments" aria-selected="true" aria-controls="accountability-panel-commitments" data-tab="commitments">
+                    <span class="partner-tab-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <path class="partner-icon-draw" d="M16 8h16v6H16V8z"/>
+                            <path class="partner-icon-draw partner-icon-draw-delay" d="M14 14h20v26H14V14z"/>
+                            <path class="partner-icon-draw partner-icon-draw-delay-2" d="M20 22h8M20 28h8M20 34h5"/>
+                        </svg>
+                    </span>
+                    <span class="partner-tab-label">Our commitments</span>
+                </button>
+                <button class="partner-tab" type="button" role="tab" id="accountability-tab-portfolio" aria-selected="false" aria-controls="accountability-panel-portfolio" data-tab="portfolio">
+                    <span class="partner-tab-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <path class="partner-icon-draw" d="M10 38V18l14-8 14 8v20"/>
+                            <path class="partner-icon-draw partner-icon-draw-delay" d="M20 38V26h8v12"/>
+                            <path class="partner-icon-draw partner-icon-draw-delay-2" d="M18 22h12"/>
+                        </svg>
+                    </span>
+                    <span class="partner-tab-label">For every business we invest in</span>
+                </button>
+            </div>
+
+            <div class="partner-panels accountability-panels">
+                <article class="partner-panel is-active" role="tabpanel" id="accountability-panel-commitments" aria-labelledby="accountability-tab-commitments" data-panel="commitments">
+                    <p class="accountability-panel-intro">Prefequity integrates responsible investment principles into how we operate, measure progress, and report to our investors.</p>
+                    <ul class="accountability-cards">
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <circle cx="24" cy="24" r="14"/>
+                                    <path d="M17 24l5 5 9-10"/>
+                                </svg>
+                            </span>
+                            <p>We are a signatory to the UN Principles for Responsible Investment</p>
+                        </li>
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <path d="M12 34V18l12-6 12 6v16"/>
+                                    <path d="M20 34V24h8v10"/>
+                                </svg>
+                            </span>
+                            <p>We measure and monitor our ESG-related activities</p>
+                        </li>
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <path d="M14 12h20v24H14z"/>
+                                    <path d="M20 18h8M20 24h8M20 30h5"/>
+                                </svg>
+                            </span>
+                            <p>We regularly update investors on our ESG efforts</p>
+                        </li>
+                    </ul>
+                </article>
+                <article class="partner-panel" role="tabpanel" id="accountability-panel-portfolio" aria-labelledby="accountability-tab-portfolio" data-panel="portfolio" hidden>
+                    <p class="accountability-panel-intro">Every investment is assessed against our ESG policy before we commit capital, and monitored throughout our partnership.</p>
+                    <ul class="accountability-cards">
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <path d="M24 10l12 6v12c0 7-12 14-12 14S12 35 12 28V16l12-6z"/>
+                                </svg>
+                            </span>
+                            <p>We vet them for any potential adverse ESG impact</p>
+                        </li>
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <path d="M10 34c4-10 10-14 14-14s10 4 14 14"/>
+                                    <path d="M24 12v8"/>
+                                    <circle cx="24" cy="10" r="2"/>
+                                </svg>
+                            </span>
+                            <p>We encourage sustainable business practices</p>
+                        </li>
+                        <li class="accountability-card">
+                            <span class="accountability-card-icon" aria-hidden="true">
+                                <svg viewBox="0 0 48 48" fill="none">
+                                    <path d="M12 36V16l12-6 12 6v20"/>
+                                    <path d="M18 36V26h12v10"/>
+                                    <path d="M18 22h12"/>
+                                </svg>
+                            </span>
+                            <p>We monitor ESG metrics in line with our ESG policy</p>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section section-cream impact-cases">
+    <div class="container">
+        <h2 class="impact-cases-heading">ESG and Impact Case Studies</h2>
+        <div class="impact-cases-grid">
+            {% for study in case_studies %}
+            {% include "website/includes/case_study_card.html" with study=study %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

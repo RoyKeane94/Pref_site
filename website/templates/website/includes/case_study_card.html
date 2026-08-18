@@ -1,0 +1,13 @@
+{% load static %}
+<a class="impact-case-card reveal{% if forloop.counter0 == 1 %} delay-1{% elif forloop.counter0 == 2 %} delay-2{% endif %}" href="{% url 'case-study' study.slug %}">
+    <div class="impact-case-media">
+        <img src="{% static study.image %}" alt="{{ study.image_alt }}">
+    </div>
+    <div class="impact-case-body">
+        <p class="impact-case-kicker">ESG and Impact Case Study</p>
+        <h3>{{ study.name }}</h3>
+        <p>{{ study.card_summary }}</p>
+        <p class="impact-case-meta">{{ study.region }} · Invested {{ study.invested }}</p>
+        <span class="impact-case-read">Read case study</span>
+    </div>
+</a>

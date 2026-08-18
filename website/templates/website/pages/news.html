@@ -1,0 +1,46 @@
+{% extends "website/pages/interior.html" %}
+{% block title %}News & Insights | Prefequity{% endblock %}
+{% block page_title %}Latest from Prefequity{% endblock %}
+{% block page_lead %}
+<p class="hero-lead">News, insights and announcements from the Prefequity team.</p>
+{% endblock %}
+{% block inner_class %}{% endblock %}
+{% block page_body %}
+<div class="news-list">
+    {% for article in articles %}
+    <a class="news-row" href="{{ article.get_absolute_url }}">
+        {% include "website/includes/card_media.html" with image=article.image alt=article.title %}
+        <div class="news-row-copy">
+            <p class="meta">{{ article.published_on|date:"j F Y" }}</p>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt }}</p>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% if page_obj.paginator.num_pages > 1 %}
+<nav class="pagination" aria-label="News pagination">
+    {% if page_obj.has_previous %}
+    <a class="pagination-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% else %}
+    <span class="pagination-link is-disabled">Previous</span>
+    {% endif %}
+
+    <div class="pagination-pages">
+        {% for page_number in page_obj.paginator.page_range %}
+            {% if page_number == page_obj.number %}
+            <span class="pagination-page is-active">{{ page_number }}</span>
+            {% else %}
+            <a class="pagination-page" href="?page={{ page_number }}">{{ page_number }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    {% if page_obj.has_next %}
+    <a class="pagination-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+    {% else %}
+    <span class="pagination-link is-disabled">Next</span>
+    {% endif %}
+</nav>
+{% endif %}
+{% endblock %}

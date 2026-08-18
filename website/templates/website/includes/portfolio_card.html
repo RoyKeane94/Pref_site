@@ -1,0 +1,13 @@
+<a class="portfolio-card{% if extra_class %} {{ extra_class }}{% endif %}" href="{{ company.get_absolute_url }}" data-status="{{ company.status }}" data-deal-type="{{ company.transaction_type }}">
+    {% if company.image %}
+    <div class="card-media">
+        <img src="{{ company.image.url }}" alt="{{ company.name }}">
+    </div>
+    {% endif %}
+    <div class="card-body">
+        <p class="meta">{{ company.sector }} · {{ company.head_office }}</p>
+        <h3>{{ company.name }}</h3>
+        <p>{{ company.summary|truncatewords:words }}</p>
+        <p class="meta-foot">{{ company.transaction_type }} · {{ company.invested_on|date:date_format }}{% if show_status %} · <span class="portfolio-status">{{ company.get_status_display }}</span>{% endif %}</p>
+    </div>
+</a>

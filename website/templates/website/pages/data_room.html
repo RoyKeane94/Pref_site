@@ -1,0 +1,22 @@
+{% extends "website/pages/interior.html" %}
+{% block title %}Investor Data Room | Prefequity{% endblock %}
+{% block page_title %}Investor Data Room{% endblock %}
+{% block page_lead %}
+<p class="hero-lead">Access is restricted to authorised limited partners and prospective investors.</p>
+{% endblock %}
+{% block page_body %}
+<p>If you are an existing investor and require access to the data room, please contact us at <a href="mailto:info@prefequity.com">info@prefequity.com</a>.</p>
+<form class="data-room-form" method="post" action="#">
+    {% csrf_token %}
+    <label>
+        Email address
+        <input type="email" name="email" placeholder="name@institution.com" required>
+    </label>
+    <label>
+        Password
+        <input type="password" name="password" required>
+    </label>
+        <button class="btn btn-gold" type="button">Enter data room</button>
+</form>
+<p class="meta">This form is a placeholder for the live investor portal.</p>
+{% endblock %}

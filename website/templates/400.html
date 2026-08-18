@@ -1,0 +1,24 @@
+{% extends "website/base.html" %}
+
+{% block title %}Bad request | Prefequity{% endblock %}
+{% block description %}The request could not be understood.{% endblock %}
+{% block body_class %}page-interior page-error{% endblock %}
+
+{% block content %}
+<section class="error-page">
+    <div class="container error-page-inner">
+        <p class="error-code">400</p>
+        <h1>That request wasn’t valid</h1>
+        <p class="error-lead">The link or form submission couldn’t be processed. Try going back and starting again from the homepage.</p>
+        <div class="error-actions">
+            <a class="btn btn-gold" href="{% url 'home' %}">Back home</a>
+            <a class="btn btn-outline" href="{% url 'contact' %}">Contact us</a>
+        </div>
+        <ul class="error-links">
+            {% for label, url_name in error_links %}
+            <li><a href="{% url url_name %}">{{ label }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "website/base.html" %}
+
+{% block title %}{{ company.name }} | Prefequity{% endblock %}
+{% block description %}{{ company.summary|truncatewords:40 }}{% endblock %}
+{% block body_class %}page-interior page-deal{% endblock %}
+
+{% block content %}
+{% with intro=company.summary_parts.0 body=company.summary_parts.1 hero_quote=company.company_quote|default:company.quote hero_attribution=company.company_quote_attribution|default:company.quote_attribution %}
+<section class="deal-page">
+    <div class="container deal-page-head">
+        <div class="deal-title-row page-header-rise">
+            <h1>{{ company.name }}</h1>
+            <span class="deal-status-badge">{{ company.get_status_display|upper }}</span>
+        </div>
+    </div>
+
+    {% if company.image or hero_quote %}
+    <div class="container deal-hero-split{% if not company.image or not hero_quote %} deal-hero-split-single{% endif %}">
+        {% if company.image %}
+        <figure class="deal-hero-media">
+            <img src="{{ company.image.url }}" alt="{{ company.name }}">
+        </figure>
+        {% endif %}
+        {% if hero_quote %}
+        <blockquote class="deal-hero-quote">
+            <span class="deal-quote-mark" aria-hidden="true">“</span>
+            <p>{{ hero_quote }}</p>
+            {% if hero_attribution %}
+            <footer>
+                <strong>{{ company.name }}</strong>
+                <span>{{ hero_attribution }}</span>
+            </footer>
+            {% endif %}
+        </blockquote>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <div class="container deal-body-grid">
+        <aside class="deal-sidebar">
+            <dl class="deal-sidebar-facts">
+                <div>
+                    <dt>Sector</dt>
+                    <dd>{{ company.sector }}</dd>
+                </div>
+                <div>
+                    <dt>Status</dt>
+                    <dd>{{ company.get_status_display }}</dd>
+                </div>
+                <div>
+                    <dt>Head office</dt>
+                    <dd>{{ company.head_office }}</dd>
+                </div>
+                <div>
+                    <dt>Transaction type</dt>
+                    <dd>{{ company.transaction_type }}</dd>
+                </div>
+                <div>
+                    <dt>Date of investment</dt>
+                    <dd>{{ company.invested_on|date:"F Y" }}</dd>
+                </div>
+            </dl>
+        </aside>
+
+        <div class="deal-main">
+            <div class="deal-main-logo">
+                {% if company.logo %}
+                <img src="{{ company.logo.url }}" alt="{{ company.name }} logo">
+                {% else %}
+                <span class="deal-main-logo-fallback">{{ company.name }}</span>
+                {% endif %}
+            </div>
+
+            {% if intro %}
+            <p class="deal-main-intro">{{ intro }}</p>
+            {% endif %}
+
+            {% for paragraph in body %}
+            <p>{{ paragraph }}</p>
+            {% empty %}
+            {% if not intro %}
+            {{ company.summary|linebreaks }}
+            {% endif %}
+            {% endfor %}
+
+            {% if company.company_quote and company.quote %}
+            <blockquote class="deal-firm-quote">
+                <p>“{{ company.quote }}”</p>
+                <footer>— {{ company.quote_attribution }}</footer>
+            </blockquote>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endwith %}
+
+{% if related %}
+<section class="section section-paper deal-related">
+    <div class="container">
+        <div class="section-head">
+            <div>
+                <h2>Other investments</h2>
+            </div>
+            <a class="text-link" href="{% url 'our-portfolio' %}">View all</a>
+        </div>
+        <div class="portfolio-grid">
+            {% for item in related %}
+            {% include "website/includes/portfolio_card.html" with company=item words=22 date_format="Y" %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

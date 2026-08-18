@@ -1,0 +1,37 @@
+{% extends "website/pages/interior.html" %}
+{% load static %}
+{% block title %}Contact Us | Prefequity{% endblock %}
+{% block page_title %}Contact Us{% endblock %}
+{% block page_lead %}
+<p class="hero-lead">If you are an ambitious owner-manager looking for flexible capital, we would like to hear from you.</p>
+{% endblock %}
+{% block page_body %}
+<div class="contact-grid">
+    <div class="contact-details">
+        <p class="contact-logo">
+            <img src="{% static 'website/img/prefequity-logo.png' %}" alt="Prefequity">
+        </p>
+        <p>18 Pall Mall<br>London<br>SW1Y 5LU</p>
+        <p>
+            <a href="tel:+442074305945">+44 20 7430 5945</a><br>
+            <a href="mailto:info@prefequity.com">info@prefequity.com</a>
+        </p>
+    </div>
+    <form class="contact-form" method="post" action="#">
+        {% csrf_token %}
+        <label>
+            Name
+            <input type="text" name="name" required>
+        </label>
+        <label>
+            Email
+            <input type="email" name="email" required>
+        </label>
+        <label>
+            Message
+            <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button class="btn btn-gold" type="button">Send</button>
+    </form>
+</div>
+{% endblock %}

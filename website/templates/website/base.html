@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Prefequity{% endblock %}</title>
+    <meta name="description" content="{% block description %}Prefequity provides flexible growth capital to ambitious UK SMEs. An attractive alternative to private equity for owner-managers.{% endblock %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'website/img/favicon.ico' %}" sizes="any">
+    <link rel="icon" href="{% static 'website/img/favicon.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'website/css/styles.css' %}">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+    {% include "website/includes/nav.html" %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    {% include "website/includes/footer.html" %}
+    <script src="{% static 'website/js/main.js' %}"></script>
+</body>
+</html>

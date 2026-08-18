@@ -1,0 +1,19 @@
+{% extends "website/base.html" %}
+
+{% block body_class %}page-interior{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container page-hero-grid">
+        <h1 class="page-header-rise">{% block page_title %}{% endblock %}</h1>
+        <div class="page-hero-lead page-header-rise delay-1">
+            {% block page_lead %}{% endblock %}
+        </div>
+    </div>
+</section>
+<section class="section section-cream">
+    <div class="container {% block inner_class %}prose-wrap{% endblock %}">
+        {% block page_body %}{% endblock %}
+    </div>
+</section>
+{% endblock %}

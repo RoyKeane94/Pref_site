@@ -1,0 +1,62 @@
+{% extends "website/base.html" %}
+
+{% block title %}Our Portfolio | Prefequity{% endblock %}
+{% block body_class %}page-interior page-portfolio{% endblock %}
+
+{% block content %}
+<section class="page-hero page-hero-compact">
+    <div class="container page-hero-grid">
+        <h1 class="page-header-rise">Our Portfolio</h1>
+        <div class="page-hero-lead page-header-rise delay-1">
+            <p class="hero-lead">Current and realised investments in well-established, profitable UK businesses.</p>
+        </div>
+    </div>
+</section>
+<section class="section section-cream">
+    <div class="container" data-portfolio-filters>
+        <div class="portfolio-filters">
+            <div class="portfolio-filters-grid">
+                <div class="portfolio-filter">
+                    <span class="portfolio-filter-label" id="portfolio-status-label">Status</span>
+                    <div class="filter-dropdown" data-filter-dropdown data-filter-key="status">
+                        <button class="filter-dropdown-trigger" type="button" aria-labelledby="portfolio-status-label" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="filter-dropdown-value">All investments</span>
+                            <span class="filter-dropdown-chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="filter-dropdown-menu" role="listbox" hidden>
+                            <li><button type="button" role="option" data-value="" class="is-selected">All investments</button></li>
+                            {% for value, label in status_choices %}
+                            <li><button type="button" role="option" data-value="{{ value }}">{{ label }}</button></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="portfolio-filter">
+                    <span class="portfolio-filter-label" id="portfolio-deal-type-label">Type of deal</span>
+                    <div class="filter-dropdown" data-filter-dropdown data-filter-key="deal_type">
+                        <button class="filter-dropdown-trigger" type="button" aria-labelledby="portfolio-deal-type-label" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="filter-dropdown-value">All deal types</span>
+                            <span class="filter-dropdown-chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="filter-dropdown-menu" role="listbox" hidden>
+                            <li><button type="button" role="option" data-value="" class="is-selected">All deal types</button></li>
+                            {% for deal_type in deal_types %}
+                            <li><button type="button" role="option" data-value="{{ deal_type }}">{{ deal_type }}</button></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="portfolio-filters-clear text-link" type="button" data-portfolio-clear hidden>Clear filters</button>
+        </div>
+        <p class="portfolio-results-count" data-portfolio-count></p>
+
+        <div class="portfolio-grid interior-grid" data-portfolio-grid>
+            {% for company in companies %}
+            {% include "website/includes/portfolio_card.html" with company=company words=32 date_format="F Y" show_status=True %}
+            {% endfor %}
+        </div>
+        <p class="portfolio-empty" data-portfolio-empty hidden>No investments match your filters.</p>
+    </div>
+</section>
+{% endblock %}
