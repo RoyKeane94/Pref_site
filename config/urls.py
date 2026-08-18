@@ -16,5 +16,4 @@ handler403 = "website.views.permission_denied"
 handler404 = "website.views.page_not_found"
 handler500 = "website.views.server_error"
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
