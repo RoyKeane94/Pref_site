@@ -1,3 +1,6 @@
 [phases.collectstatic]
 dependsOn = ["install"]
-cmds = ["python manage.py collectstatic --noinput"]
+cmds = [
+  "mkdir -p media_bundle && cp -a media/. media_bundle/",
+  "python manage.py collectstatic --noinput",
+]

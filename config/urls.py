@@ -5,16 +5,16 @@ from django.views.static import serve
 
 from website import views
 
+
+def serve_media(request, path):
+    return serve(request, path, document_root=str(settings.MEDIA_ROOT))
+
+
 urlpatterns = [
+    re_path(r"^media/(?P<path>.*)$", serve_media, name="media"),
     path("admin/", admin.site.urls),
     path("favicon.ico", views.favicon, name="favicon"),
     path("", include("website.urls")),
-    re_path(
-        r"^media/(?P<path>.*)$",
-        serve,
-        {"document_root": settings.MEDIA_ROOT},
-        name="media",
-    ),
 ]
 
 handler400 = "website.views.bad_request"
