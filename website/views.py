@@ -1,9 +1,23 @@
+from pathlib import Path
+
+from django.conf import settings
+from django.contrib.staticfiles import finders
 from django.core.paginator import Paginator
-from django.http import Http404
+from django.http import FileResponse, Http404
 from django.shortcuts import get_object_or_404, render
 
 from .case_studies import CASE_STUDIES, get_case_study
 from .models import HomepageSlide, NewsArticle, PortfolioCompany, TeamMember
+
+
+def favicon(request):
+    path = finders.find("website/img/favicon.ico")
+    if not path:
+        fallback = Path(settings.STATIC_ROOT) / "website" / "img" / "favicon.ico"
+        path = str(fallback) if fallback.exists() else None
+    if not path:
+        raise Http404()
+    return FileResponse(open(path, "rb"), content_type="image/x-icon")
 
 
 def home(request):
