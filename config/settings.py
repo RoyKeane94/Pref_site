@@ -18,13 +18,18 @@ def _truthy(name, default="false"):
 
 
 def _compose_postgres_url():
-    host = os.environ.get("PGHOST")
+    host = os.environ.get("DB_HOST") or os.environ.get("PGHOST")
     if not host:
         return ""
-    user = os.environ.get("PGUSER") or os.environ.get("POSTGRES_USER") or "postgres"
-    password = quote_plus(os.environ.get("PGPASSWORD") or os.environ.get("POSTGRES_PASSWORD") or "")
-    port = os.environ.get("PGPORT") or "5432"
-    name = os.environ.get("PGDATABASE") or os.environ.get("POSTGRES_DB") or "railway"
+    user = os.environ.get("DB_USER") or os.environ.get("PGUSER") or os.environ.get("POSTGRES_USER") or "postgres"
+    password = quote_plus(
+        os.environ.get("DB_PASSWORD")
+        or os.environ.get("PGPASSWORD")
+        or os.environ.get("POSTGRES_PASSWORD")
+        or ""
+    )
+    port = os.environ.get("DB_PORT") or os.environ.get("PGPORT") or "5432"
+    name = os.environ.get("DB_NAME") or os.environ.get("PGDATABASE") or os.environ.get("POSTGRES_DB") or "railway"
     return f"postgresql://{user}:{password}@{host}:{port}/{name}"
 
 
